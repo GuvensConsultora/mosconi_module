@@ -1,0 +1,19 @@
+
+{
+    "name": "Mosconi Product Categories",
+    "version": "1.3",
+    "summary": "Categorías con tarjeta, imagen, video embebido y wizard visual",
+    "depends": ["website", "product"],
+    "assets": {
+    "web.assets_frontend": [
+        "mosconi_module/static/src/js/hover_modal.js",
+    ],
+}
+
+    "data": [
+        "views/templates.xml",
+        "views/category_form.xml"
+    ],
+    "installable": True,
+    "application": True
+}

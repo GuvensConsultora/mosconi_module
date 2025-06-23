@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="category_cards_template" model="ir.ui.view">
+            <field name="name">mosconi.category.cards.template</field>
+            <field name="type">qweb</field>
+            <field name="key">mosconi.category_cards_template</field>
+            <field name="arch" type="xml">
+                <t t-name="mosconi.category_cards_template">
+                    <t t-call="website.layout">
+                        <div class="container mt-5">
+                            <div class="row">
+                                <t t-foreach="categories" t-as="category">
+                                    <t t-set="modal_id" t-value="'wizardVideoModal%s' % category.id"/>
+                                    <div class="col-md-4 mb-4">
+                                      <div class="card shadow-sm h-100 text-center">
+					<a href="javascript:void(0);"
+					   class="hover-modal-trigger"
+					   t-att-data-target="'#%s' % modal_id"
+					   data-toggle="modal"
+					   style="display: block; text-decoration: none;">
+					  <img t-att-src="'/web/image/product.category/%s/x_card_image' % category.id"
+					       style="object-fit:cover; height:200px;" />
+					</a>
+					<div class="card-body text-center">
+					    <h5 class="card-title"><t t-esc="category.name"/></h5>
+					  </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" t-att-id="modal_id" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                                            <div class="modal-content border-0 shadow-lg">
+                                                <div class="modal-header bg-dark text-white">
+                                                    <h5 class="modal-title"><t t-esc="category.name"/></h5>
+                                                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body bg-light">
+                                                    <t t-if="category.x_video_embed">
+                                                        <div class="embed-responsive embed-responsive-16by9">
+                                                            <div class="embed-responsive-item" t-raw="category.x_video_embed"/>
+                                                        </div>
+                                                    </t>
+                                                    <t t-if="not category.x_video_embed">
+                                                        <p class="text-muted">Esta categoría no tiene video asignado.</p>
+                                                    </t>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </field>
+        </record>
+	<record id="test_modal_demo_template" model="ir.ui.view">
+	  <field name="name">test.modal.demo.template</field>
+	  <field name="type">qweb</field>
+	  <field name="key">test.modal.demo</field>
+	  <field name="arch" type="xml">
+            <t t-name="test.modal.demo">
+              <t t-call="website.layout">
+                <div class="container mt-5">
+                  <div class="row justify-content-center">
+                    <div class="col-md-4">
+                      <t t-set="modal_id" t-value="'wizardDemoModal'"/>
+                      <a href="javascript:void(0);" data-toggle="modal" t-att-data-target="'#%s' % modal_id" class="btn btn-primary btn-block">
+                        Abrir Modal de Prueba
+                      </a>
+
+                      <div class="modal fade" t-att-id="modal_id" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Demo Modal</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                <span aria-hidden="true">x</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Este es un modal de prueba simple para validar que Bootstrap JS está funcionando.</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </t>
+	    </t>
+          </field>
+	</record>
+    </data>
+</odoo>

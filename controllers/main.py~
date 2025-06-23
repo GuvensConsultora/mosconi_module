@@ -1,0 +1,10 @@
+
+from odoo import http
+from odoo.http import request
+
+class MosconiCategoryController(http.Controller):
+
+    @http.route('/mosconi/categories', type='http', auth='public', website=True)
+    def show_categories(self):
+        categories = request.env['product.category'].sudo().search([('parent_id', '=', False)])
+        return request.render('mosconi.category_cards_template', {'categories': categories})

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_category_form_inherit_mosconi" model="ir.ui.view">
+        <field name="name">product.category.form.mosconi</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="after">
+                <notebook>
+                    <page string="Tarjeta Web">
+                        <group>
+                            <field name="x_card_image" widget="image"/>
+                            <field name="x_video_embed"/>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>
