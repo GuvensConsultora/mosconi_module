@@ -8,3 +8,64 @@
     transform: scale(1.03);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
+
+@media (max-width: 768px) {
+  .responsive-modal-dialog {
+    max-width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+  }
+
+  .responsive-modal-dialog .modal-content {
+    height: 100%;
+    border-radius: 0;
+  }
+
+  #videoFrame {
+    height: 100% !important;
+  }
+}
+
+.modal-dialog {
+  max-width: 90vw;  /* Abarca el 90% del ancho visible */
+  max-height: 90vh; /* Abarca el 90% del alto visible */
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.modal-body {
+  max-width: 90vw;  /* Abarca el 90% del ancho visible */
+  max-height: 90vh; /* Abarca el 90% del alto visible */
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.video-container {
+  max-width: 90vw;  /* Abarca el 90% del ancho visible */
+  max-height: 60vh; /* Abarca el 90% del alto visible */
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* proporción 16:9 */
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  border: none;
+}

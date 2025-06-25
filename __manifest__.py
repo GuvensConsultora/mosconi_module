@@ -6,7 +6,7 @@
     'assets': {
         'web.assets_frontend': [
             'mosconi_module/static/src/css/hover_modal.css',
-            'mosconi_module/static/src/js/hover_modal.js',
+            'mosconi_module/static/src/js/hover_modal_define.js',
         ],
     },
     'data': [
