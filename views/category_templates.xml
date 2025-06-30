@@ -33,7 +33,7 @@
 					     </a>
 					  </t>
 					  <t t-if="not category.child_id">
-					    <a t-attf-href="/mosconi/categories?category_id=#{category.id}">
+					    <a t-attf-href="/mosconi/products?category_id=#{category.id}">
 					       Ver Productos
 					     </a>
 					  </t>

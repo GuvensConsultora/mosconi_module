@@ -16,7 +16,7 @@
     'data': [
         'views/templates.xml',
         'views/category_templates.xml',
-        'views/products_templetes.xml',
+        'views/products_templates.xml',
         'views/category_form.xml',
     ],
     'installable': True,

@@ -7,8 +7,10 @@ class MosconiCategoryController(http.Controller):
 
     @http.route('/mosconi/products', type='http', auth='public', website=True)
     def mostrar_productos(self, category_id=None):
-        productos = request.env['product.template'].sudo().search([('categ_id', '=', category_id)])
-        return request.render('mosconi.product_cards_template', {'categories': products})
+        categ_id = int(category_id)
+        productos = request.env['product.template'].sudo().search([('categ_id', '=', categ_id)])
+        _logger.info(f"Mostrando productos por  categoría_id={categ_id}: {productos.read()}")
+        return request.render('mosconi.products_cards_template', {'products': productos})
 
     
     @http.route('/mosconi/categories', type='http', auth='public', website=True)

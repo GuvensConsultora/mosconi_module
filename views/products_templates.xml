@@ -2,17 +2,17 @@
 <odoo>
   <data>
         <record id="products_cards_template" model="ir.ui.view">
-            <field name="name">mosconi.product.cards.template</field>
+            <field name="name">mosconi.products.cards.template</field>
             <field name="type">qweb</field>
-            <field name="key">mosconi.product_cards_template</field>
+            <field name="key">mosconi.products_cards_template</field>
             <field name="arch" type="xml">
-                <t t-name="mosconi.product_cards_template">
+                <t t-name="mosconi.products_cards_template">
                   <t t-call="website.layout">
-		    <t t-esc="products"/>
+		    <!--<t t-esc="products"/>-->
                         <div class="container mt-5">
                             <div class="row">
                                 <t t-foreach="products" t-as="product">
-                                    <t t-set="modal_id" t-value="'wizardVideoModal%s' % category.id"/>
+                                    <t t-set="modal_id" t-value="'wizardVideoModal%s' % product.id"/>
                                     <div class="col-md-4 mb-4">
                                       <div class="card shadow-sm h-100 text-center">
 					<a href="javascript:void(0);"
@@ -20,18 +20,18 @@
 					   t-att-data-target="'#%s' % modal_id"
 					   data-toggle="modal"
 					   style="display: block; text-decoration: none;">
-					  <!--<img t-att-src="'/web/image/product.category/%s/x_card_image' % category.id"
-					       style="object-fit:cover; height:200px;" />-->
+					  <img t-att-src="'/web/image/product.template/%s/image_1920' % product.id"
+					       style="object-fit:cover; height:200px;" />
 					   <div class="hover-countdown" style="font-size: 1.2em; color: red;"></div>
 					</a>
 					
 					<div class="card-body text-center">
 					  <h5 class="card-title"><t t-esc="product.name"/></h5>
-					  <t t-if="not category.child_id">
-					    <a t-attf-href="/mosconi/products?category_id=#{category.id}">
+					  <!--<t t-if="not category.child_id">-->
+					    <a t-attf-href="/mosconi/products?category_id=#{product.id}">
 					       Ver Producto
 					     </a>
-					  </t>
+					  <!--</t>-->
 					</div>
                                       </div>
                                     </div>
@@ -41,15 +41,15 @@
 				      <div class="modal-dialog modal-video-custom" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header  text-blue">
-                                                    <h5 class="modal-title"><t t-esc="category.name"/></h5>
+                                                    <h5 class="modal-title"><t t-esc="product.name"/></h5>
                                                 </div>
                                                 <div class="modal-body">
-						  <t t-if="category.x_video_embed and isinstance(category.x_video_embed, str)">
+						  <!--<t t-if="category.x_video_embed and isinstance(category.x_video_embed, str)">
 						   <div class="video-container">
 						      <iframe t-att-src="'https://www.youtube.com/embed/%s?autoplay=0&amp;controls=1&amp;rel=0&amp;showinfo=0' % category.x_video_embed.split('v=')[-1]"  allowfullscreen="allowfullscreen" allow="autoplay;">
 						      </iframe>
 						   </div>
-						  </t>
+						  </t>-->
 						</div>
 						<div class="modal-footer">
 						  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
