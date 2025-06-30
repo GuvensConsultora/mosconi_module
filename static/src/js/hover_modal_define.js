@@ -34,14 +34,14 @@ odoo.define('mosconi_module.hover_modal_define', [], function (require) {
 
             const $modal = $(modalSelector);
             const $iframe = $modal.find('iframe');
-            const videoUrl = $trigger.data('video-src');
 
 	    $modal.on('shown.bs.modal', function () {
-		    $iframe.attr('src', videoUrl);
+		const updatedVideoUrl = $trigger.data('video-src');  // vuelve a leer el atributo dinámicamente
+		$iframe.attr('src', updatedVideoUrl);
 	    });
 
             $modal.on('hidden.bs.modal', function () {
-                $iframe.attr('src', '');
+                $iframe.attr('src','');
             });
         });
     });

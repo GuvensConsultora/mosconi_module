@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-        <record id="category_cards_template" model="ir.ui.view">
-            <field name="name">mosconi.category.cards.template</field>
+        <record id="products_cards_template" model="ir.ui.view">
+            <field name="name">mosconi.product.cards.template</field>
             <field name="type">qweb</field>
-            <field name="key">mosconi.category_cards_template</field>
+            <field name="key">mosconi.product_cards_template</field>
             <field name="arch" type="xml">
-                <t t-name="mosconi.category_cards_template">
+                <t t-name="mosconi.product_cards_template">
                   <t t-call="website.layout">
-		    <t t-esc="categories"/>
+		    <t t-esc="products"/>
                         <div class="container mt-5">
                             <div class="row">
-                                <t t-foreach="categories" t-as="category">
+                                <t t-foreach="products" t-as="product">
                                     <t t-set="modal_id" t-value="'wizardVideoModal%s' % category.id"/>
                                     <div class="col-md-4 mb-4">
                                       <div class="card shadow-sm h-100 text-center">
@@ -20,21 +20,15 @@
 					   t-att-data-target="'#%s' % modal_id"
 					   data-toggle="modal"
 					   style="display: block; text-decoration: none;">
-					  <img t-att-src="'/web/image/product.category/%s/x_card_image' % category.id"
-					       style="object-fit:cover; height:200px;" />
+					  <!--<img t-att-src="'/web/image/product.category/%s/x_card_image' % category.id"
+					       style="object-fit:cover; height:200px;" />-->
 					   <div class="hover-countdown" style="font-size: 1.2em; color: red;"></div>
 					</a>
 					
 					<div class="card-body text-center">
-					  <h5 class="card-title"><t t-esc="category.name"/></h5>
-					  <t t-if="category.child_id">
-					     <a t-attf-href="/mosconi/categories?category_id=#{category.id}">
-					       Ver Subcategoría
-					     </a>
-					  </t>
+					  <h5 class="card-title"><t t-esc="product.name"/></h5>
 					  <t t-if="not category.child_id">
-					    <a t-attf-href="/mosconi/categories?category_id=#{category.id}">
-					       Ver Productos
+					       Ver Producto
 					     </a>
 					  </t>
 					</div>
