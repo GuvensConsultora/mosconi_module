@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <t t-name="mosconi.category_cards_template">
                   <t t-call="website.layout">
-		    <t t-esc="categories"/>
+		    <!--<t t-esc="categories"/>-->
                         <div class="container mt-5">
                             <div class="row">
                                 <t t-foreach="categories" t-as="category">
