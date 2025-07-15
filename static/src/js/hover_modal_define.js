@@ -7,7 +7,12 @@ odoo.define('mosconi_module.hover_modal_define', [], function (require) {
         let timer;
         let countdown = 3;
         let countdownElement = $trigger.find('.hover-countdown');
+	const $modal = $(modalSelector);
+        const $iframe = $modal.find('iframe');
+        let originalSrc = null; // ← solo en memoria
 
+
+	
         function resetCountdown() {
             clearInterval(timer);
             countdown = 3;
@@ -15,6 +20,11 @@ odoo.define('mosconi_module.hover_modal_define', [], function (require) {
         }
 
         $trigger.on('mouseenter', function () {
+	    if (!originalSrc) {
+		originalSrc = $iframe.attr('src'); // guardo en memoria el video
+	    }
+	    if (!originalSrc) return;
+	    
             countdownElement.text(countdown);
             timer = setInterval(function () {
                 countdown -= 1;
@@ -31,11 +41,16 @@ odoo.define('mosconi_module.hover_modal_define', [], function (require) {
             resetCountdown();
         });
 
-        const $modal = $(modalSelector);
-        const $iframe = $modal.find('iframe');
-        const updatedVideoUrl = $iframe.attr('src');
+        //const $modal = $(modalSelector);
+        //const $iframe = $modal.find('iframe');
+        //const updatedVideoUrl = $iframe.attr('src');
         $modal.on('shown.bs.modal', function () {
-            $iframe.attr('src', updatedVideoUrl);
+	    if (originalSrc) {
+                const autoplayUrl = originalSrc.includes('?')
+                    ? `${originalSrc}&autoplay=1`
+                    : `${originalSrc}?autoplay=1`;
+                $iframe.attr('src', autoplayUrl);
+            }  //$iframe.attr('src', updatedVideoUrl);
         });
 
         $modal.on('hidden.bs.modal', function () {

@@ -1,4 +1,4 @@
-from odoo import http
+nfrom odoo import http
 from odoo.http import request
 import logging
 _logger = logging.getLogger(__name__)
@@ -15,7 +15,7 @@ class MosconiCategoryController(http.Controller):
     
     @http.route('/mosconi/categories', type='http', auth='public', website=True)
     def mostrar_categorias(self, category_id=None):
-        Category = request.env['product.category'].sudo()
+        Category = request.env['product.public.category'].sudo()
 
         if category_id:
             try:

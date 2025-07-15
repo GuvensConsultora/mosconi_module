@@ -6,7 +6,7 @@
     'images': ['static/description/icon.png'],
     'author': 'Guvens Consultora',
     'website': 'https://www.yaguven.com',
-    'depends': ['website', 'product'],
+    'depends': ['website_sale', 'product'],
     'assets': {
         'web.assets_frontend': [
             'mosconi_module/static/src/css/hover_modal.css',

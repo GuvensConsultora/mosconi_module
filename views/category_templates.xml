@@ -12,15 +12,16 @@
                         <div class="container mt-5">
                             <div class="row">
                                 <t t-foreach="categories" t-as="category">
-                                    <t t-set="modal_id" t-value="'wizardVideoModal%s' % category.id"/>
-                                    <div class="col-md-4 mb-4">
+                                  <t t-set="modal_id" t-value="'wizardVideoModal%s' % category.id"/>
+				    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                                    <!--<div class="col-md-4 mb-4">-->
                                       <div class="card shadow-sm h-100 text-center">
 					<a href="javascript:void(0);"
 					   class="hover-modal-trigger"
 					   t-att-data-target="'#%s' % modal_id"
 					   data-toggle="modal"
 					   style="display: block; text-decoration: none;">
-					  <img t-att-src="'/web/image/product.category/%s/x_card_image' % category.id"
+					  <img t-att-src="'/web/image/product.public.category/%s/image_1920' % category.id"
 					       style="object-fit:cover; height:200px;" />
 					   <div class="hover-countdown" style="font-size: 1.2em; color: red;"></div>
 					</a>
