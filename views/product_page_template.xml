@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_page_template" model="ir.ui.view">
+        <field name="name">product.page.template</field>
+        <field name="type">qweb</field>
+	<field name="key">mosconi_module.product_page_template</field> <!-- Obligatorio para request.render -->
+        <field name="arch" type="xml">
+            <template page="True">
+                <t t-call="website.layout">
+                  <div class="container mt-4">
+		    <h1><t t-esc="debug_text"/></h1>
+                        <h1><t t-esc="product.name"/></h1>
+                        <div class="row">
+                            <div class="col-md-4">
+                               <!-- <t t-call="product_extended_page.product_template_child"/>-->
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </template>
+        </field>
+    </record>
+</odoo>

@@ -18,6 +18,8 @@
         'views/category_templates.xml',
         'views/products_templates.xml',
         'views/category_form.xml',
+        'views/product_template_child.xml',
+        'views/product_page_template.xml',
     ],
     'installable': True,
     'application': True,

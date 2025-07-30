@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_template_child" model="ir.ui.view">
+        <field name="name">product.template.child</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="website_sale.product"/>
+        <field name="arch" type="xml">
+
+            <!-- Ocultar precio -->
+            <xpath expr="//t[@t-call='website_sale.product_price']" position="replace"/>
+
+            <!-- Ocultar botón add_to_cart -->
+            <xpath expr="//a[@id='add_to_cart']" position="replace"/>
+
+        </field>
+    </record>
+</odoo>
