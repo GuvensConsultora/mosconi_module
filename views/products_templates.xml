@@ -28,7 +28,7 @@
 					<div class="card-body text-center">
 					  <h5 class="card-title"><t t-esc="product.name"/></h5>
 					  <!--<t t-if="not category.child_id">-->
-					    <a t-attf-href="/producto/hijo/#{product.id}">
+					    <a t-attf-href="/shop/product_custom/#{product.id}">
 					       Ver Producto
 					     </a>
 					  <!--</t>-->

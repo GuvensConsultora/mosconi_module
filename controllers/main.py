@@ -1,5 +1,7 @@
 from odoo import http
 from odoo.http import request
+from odoo.addons.website_sale.controllers.main import WebsiteSale
+
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -12,7 +14,6 @@ class MosconiCategoryController(http.Controller):
         _logger.info(f"Mostrando productos por  categoría_id={categ_id}: {productos.read()}")
         return request.render('mosconi.products_cards_template', {'products': productos})
 
-    
     @http.route('/mosconi/categories', type='http', auth='public', website=True)
     def mostrar_categorias(self, category_id=None):
         Category = request.env['product.public.category'].sudo()
@@ -37,10 +38,31 @@ class MosconiCategoryController(http.Controller):
         product = request.env['product.template'].sudo().browse(product_id)
         # 2. Renderiza la plantilla con ese único producto
         return request.render(
-            'mosconi_module.product_page_template',
-            {'product': product,
-             'debug_text':'Render funcionando correctamente'}
+            'mosconi.product_page_template',
+            { 'product': product,}
         )
+
+
+    @http.route(['/shop/product_custom/<model("product.template"):product>'], type='http', auth="public", website=True)
+    def product_custom(self, product, category=None, search=None, **kwargs):
+        # Usar el controller de Odoo para obtener los valores
+        ws = WebsiteSale()
+        values = ws._prepare_product_values(product, category, search)
+        values['hide_prices'] = True
+        return request.render("website_sale.product", values)
+
+
+
+
+class CustomCartController(http.Controller):
+
+    @http.route(['/cart/custom'], type='http', auth="public", website=True)
+    def custom_cart(self):
+        """Renderiza el carrito con precios ocultos"""
+        # Llamamos al método del carrito estándar para mantener todas las funcionalidades
+        values = request.website.sale_get_order().sudo()._get_cart_summary()
+        values['hide_prices'] = True  # Variable para el template
+        return request.render('website_sale.cart', values)
 
 
 class MosconiController(http.Controller):

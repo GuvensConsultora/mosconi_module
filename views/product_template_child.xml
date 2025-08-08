@@ -3,9 +3,25 @@
     <record id="product_template_child" model="ir.ui.view">
         <field name="name">product.template.child</field>
         <field name="type">qweb</field>
+	<field name="key">mosconi.product_template_child</field> <!-- nombre_modulo.id_vista -->
         <field name="inherit_id" ref="website_sale.product"/>
         <field name="arch" type="xml">
+	  <!-- Elimina el breadcrumb con keep() para evitar errores -->
+          <xpath expr="//ol[contains(@class,'o_wsale_breadcrumb')]" position="replace">
+            <ol class="o_wsale_breadcrumb breadcrumb p-0 mb-4 m-lg-0">
+              <li class="breadcrumb-item">
+                <a href="/shop">All Products</a>
+              </li>
+            </ol>
+          </xpath>
 
+
+	    <!-- 🔹 Elimina el bloque de buscador que usa website_sale.search 
+                 <xpath expr="//t[t-call='website_sale.search']" position="replace"/> -->
+	    <xpath expr="//t[@t-call='website_sale.search' and @t-if=&quot;is_view_active('website_sale.search')&quot;]" position="replace" />
+
+
+	  
             <!-- Ocultar precio -->
             <xpath expr="//t[@t-call='website_sale.product_price']" position="replace"/>
 
