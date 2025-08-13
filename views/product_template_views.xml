@@ -1,0 +1,66 @@
+<odoo>
+    <record id="view_product_template_form_inherit_attributes" model="ir.ui.view">
+        <field name="name">product.template.form.attributes</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+
+            <!-- Insertar al final del formulario -->
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Atributos Mosconi">
+                    <group>
+                        <group>
+                            <field name="altura_cm"/>
+                            <field name="ancho_cm"/>
+                            <field name="prof_cm"/>
+                            <field name="peso_producto_completo"/>
+                            <field name="cantidad_bultos"/>
+                            <field name="codigo_ean"/>
+                            <field name="marca"/>
+                            <field name="garantia"/>
+                            <field name="pais_origen"/>
+                            <field name="material_interno"/>
+                            <field name="material_externo_acabado"/>
+                            <field name="cantidad_puertas"/>
+                            <field name="tipo_apertura"/>
+                            <field name="material_manija"/>
+                            <field name="color_manija"/>
+                            <field name="cantidad_cajones"/>
+                            <field name="tipo_corredera"/>
+                            <field name="material_tirador"/>
+                            <field name="color_tirador"/>
+                        </group>
+                        <group>
+                            <field name="peso_admisible"/>
+                            <field name="cantidad_tiradores"/>
+                            <field name="tirador"/>
+                            <field name="color_general"/>
+                            <field name="tipo"/>
+                            <field name="capacidad"/>
+                            <field name="cantidad_estantes"/>
+                            <field name="cantidad_estantes_fijos"/>
+                            <field name="tipo_vinculacion_fijo"/>
+                            <field name="peso_max_admi_fijo"/>
+                            <field name="cantidad_estantes_flotantes"/>
+                            <field name="tipo_vinculacion_flotante"/>
+                            <field name="peso_max_admi_flotante"/>
+                            <field name="cantidad"/>
+                            <field name="fija_o_regulable"/>
+                            <field name="material"/>
+                            <field name="cant_ruedas"/>
+                            <field name="tipo_rueda"/>
+                            <field name="freno"/>
+                            <field name="requiere_ensamblado"/>
+                            <field name="incluye_kit_instalacion"/>
+                            <field name="medidas_peso_bulto_1"/>
+                            <field name="medidas_peso_bulto_2"/>
+                            <field name="medidas_peso_bulto_3"/>
+                            <field name="medidas_peso_bulto_4"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
