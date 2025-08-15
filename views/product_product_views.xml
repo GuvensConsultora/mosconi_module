@@ -2,11 +2,12 @@
     <record id="view_product_product_form_inherit_attributes" model="ir.ui.view">
         <field name="name">product.product.form.attributes</field>
         <field name="model">product.product</field>
-        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
         <field name="arch" type="xml">
 
             <!-- Insertar al final del formulario -->
-            <xpath expr="//sheet/notebook" position="inside">
+            <xpath expr="//sheet" position="inside">
+	      <notebook>
                 <page string="Atributos Mosconi">
                     <group>
                         <group>
@@ -59,6 +60,7 @@
                         </group>
                     </group>
                 </page>
+		</notebook>
             </xpath>
 
         </field>

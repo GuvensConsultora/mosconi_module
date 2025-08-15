@@ -21,6 +21,7 @@
         'views/product_template_child.xml',
         'views/product_page_template.xml',
         'views/product_template_views.xml',
+        'views/product_product_views.xml',
     ],
     'installable': True,
     'application': True,
