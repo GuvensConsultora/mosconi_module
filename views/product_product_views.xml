@@ -1,13 +1,13 @@
 <odoo>
-    <record id="view_product_template_form_inherit_attributes" model="ir.ui.view">
-        <field name="name">product.template.form.attributes</field>
-        <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+    <record id="view_product_product_form_inherit_attributes" model="ir.ui.view">
+        <field name="name">product.product.form.attributes</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
 
             <!-- Insertar al final del formulario -->
             <xpath expr="//sheet/notebook" position="inside">
-                <page string="Atributos">
+                <page string="Atributos Mosconi">
                     <group>
                         <group>
                             <field name="altura_cm"/>
@@ -35,7 +35,7 @@
                             <field name="cantidad_tiradores"/>
                             <field name="tirador"/>
                             <field name="color_general"/>
-                            <field name="tipo_general"/>
+                            <field name="tipo"/>
                             <field name="capacidad"/>
                             <field name="cantidad_estantes"/>
                             <field name="cantidad_estantes_fijos"/>
@@ -46,7 +46,7 @@
                             <field name="peso_max_admi_flotante"/>
                             <field name="cantidad"/>
                             <field name="fija_o_regulable"/>
-                            <field name="material_general"/>
+                            <field name="material"/>
                             <field name="cant_ruedas"/>
                             <field name="tipo_rueda"/>
                             <field name="freno"/>
