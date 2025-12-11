@@ -1,6 +1,6 @@
 {
     'name': 'Mosconi Website',
-    'version': '10.0',
+    'version': '18.0',
     'summary': 'Categorías con tarjeta, imagen, video embebido y wizard visual',
     'description': 'Módulo para mostrar categorías, subcategorías y productos con soporte para videos en modales.',
     'images': ['static/description/icon.png'],
@@ -23,6 +23,7 @@
         'views/product_template_views.xml',
         'views/product_product_views.xml',
     ],
+    'license':'OEEL-1',
     'installable': True,
     'application': True,
 }
