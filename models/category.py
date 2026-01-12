@@ -8,7 +8,6 @@ class ProductCategory(models.Model):
 
 class Producttemplate(models.Model):
     _inherit = 'product.template'
-
     
     altura_cm = fields.Char(string="Altura en cm.")
     ancho_cm = fields.Char(string="Ancho en cm.")
