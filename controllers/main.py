@@ -9,7 +9,13 @@ class MosconiCategoryController(http.Controller):
 
     @http.route('/mosconi/products', type='http', auth='public', website=True)
     def mostrar_productos(self, category_id=None):
-        categ_id = int(category_id)
+        # Sin category_id (o no numérico) no hay listado que mostrar: volver a las categorías
+        # en vez de dar error 500.
+        try:
+            categ_id = int(category_id)
+        except (TypeError, ValueError):
+            _logger.warning(f"/mosconi/products sin category_id válido: {category_id!r}")
+            return request.redirect('/mosconi/categories')
         productos = request.env['product.template'].sudo().search([('public_categ_ids', '=', categ_id)])
         _logger.info(f"Mostrando productos por  categoría_id={categ_id}: {productos.read()}")
         return request.render('mosconi.products_cards_template', {'products': productos})
